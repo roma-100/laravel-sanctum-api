@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Public routes
 //Route::resource('operations', OperationController::class);
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::get('/operations', [OperationController::class, 'index']);
 Route::get('/operations/{id}', [OperationController::class, 'show']);
 Route::get('/operations/search/{type}', [OperationController::class, 'search']);
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/operations', [OperationController::class, 'store']);
     Route::put('/operations/{id}', [OperationController::class, 'update']);
     Route::delete('/operations/{id}', [OperationController::class, 'destroy']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
 /* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

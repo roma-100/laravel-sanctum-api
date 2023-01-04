@@ -31,4 +31,39 @@ class AuthController extends Controller
 
         return response($response, 201);
     }
+
+    public function login (Request $request) {
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+    
+        // Check email
+        $user = User::where('email', $fiields['email'])->first();
+        
+        // Check password
+        if(!$user || !Hash::check($fields['password'], $user->password)) {
+            return response([
+                'message' => 'Your password is incorrect'
+            ], 401);
+        }
+
+
+        $token = $user->createToken('myapptoken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
+
+    public function logouts (Request $request) {
+        auth()->user()->token()->delete();
+
+        return [
+            'message' => 'Logged out'
+        ];
+    }
 }
