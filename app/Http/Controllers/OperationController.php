@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 //use App\Http\Requests\UpdateOperationRequest;
 use App\Models\Operation;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\DB;
 
 class OperationController extends Controller
 {
@@ -17,6 +18,15 @@ class OperationController extends Controller
     public function index()
     {
         return Operation::all();
+    }
+
+    public function total()
+    {
+        $data = [];
+        $data['rur'] = Operation::all()->sum('rur');
+        $data['usd'] = Operation::all()->sum('usd');
+        $data['tg'] = Operation::all()->sum('tg');
+        return $data;
     }
 
     /**
@@ -39,7 +49,7 @@ class OperationController extends Controller
     {   //print_r($request['opdate']);
         $request->validate([
             'type' => 'required',
-            'name' => 'required',
+            //'name' => 'required',
             'description' => 'required',
             'opdate'=> 'required'
         ]);

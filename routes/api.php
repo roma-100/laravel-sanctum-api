@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/operations', [OperationController::class, 'index']);
+Route::get('/operations/total', [OperationController::class, 'total']);
 Route::get('/operations/{id}', [OperationController::class, 'show']);
 Route::get('/operations/search/{type}', [OperationController::class, 'search']);
 
