@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/operations', [OperationController::class, 'index']);
-Route::get('/operations/total', [OperationController::class, 'total']);
+//Route::get('/operations/total', [OperationController::class, 'total']);
 //Route::get('/operations/{id}', [OperationController::class, 'show']);
 Route::get('/operations/search/{type}', [OperationController::class, 'search']);
 
@@ -32,8 +32,7 @@ Route::post('/operations', [OperationController::class, 'store']); */
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //
     Route::post('/operations', [OperationController::class, 'store']);
-    Route::get('/operations/{id}', [OperationController::class, 'show']);
-    //oute::get('/operations/total', [OperationController::class, 'total']);
+    Route::get('/operations/total', [OperationController::class, 'total']);
     Route::put('/operations/{id}', [OperationController::class, 'update']);
     Route::delete('/operations/{id}', [OperationController::class, 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout']);
