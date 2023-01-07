@@ -22,12 +22,12 @@ class OperationController extends Controller
 
     public function total()
     {
-/*         $data = [];
+        $data = [];
         $data['rur'] = Operation::all()->sum('rur');
         $data['usd'] = Operation::all()->sum('usd');
         $data['tg'] = Operation::all()->sum('tg');
-        return $data; */
-        return Operation::all();
+        return $data;
+        //return Operation::all();
 
     }
 
