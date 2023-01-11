@@ -55,7 +55,7 @@ class OperationController extends Controller
             'description' => 'required',
             'opdate'=> 'required'
         ]);
-        return Operation::create($request->all()->orderBy('opdate', 'asc'));
+        return Operation::create($request->all()->orderBy('opdate', 'asc')->get());
     }
 
     /**
