@@ -17,7 +17,7 @@ class OperationController extends Controller
      */
     public function index()
     {
-        return Operation::all();
+        return Operation::all()->orderBy('opdate', 'asc')->get();
     }
 
     public function total()
@@ -55,7 +55,7 @@ class OperationController extends Controller
             'description' => 'required',
             'opdate'=> 'required'
         ]);
-        return Operation::create($request->all()->orderBy('opdate', 'asc')->get());
+        return Operation::create($request->all());
     }
 
     /**
