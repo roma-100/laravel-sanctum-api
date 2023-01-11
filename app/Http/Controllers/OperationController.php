@@ -17,7 +17,7 @@ class OperationController extends Controller
      */
     public function index()
     {
-        return Operation::all()->orderBy('opdate', 'asc')->get();
+        return Operation::orderBy('opdate', 'desc')->get();
     }
 
     public function total()
