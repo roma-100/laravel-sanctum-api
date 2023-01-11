@@ -19,9 +19,9 @@ class CreateOperationsTable extends Migration
             $table->string('slug');
             $table->string('name')->nullable;
             $table->string('description')->nullable;
-            $table->decimal('usd',5,2)->default(0);
-            $table->decimal('rur',6,2)->default(0);
-            $table->decimal('tg',7,2)->default(0);
+            $table->decimal('usd',12,2)->default(0);
+            $table->decimal('rur',12,2)->default(0);
+            $table->decimal('tg',12,2)->default(0);
             $table->timestamps();
         });
     }
